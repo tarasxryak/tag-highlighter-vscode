@@ -5,9 +5,34 @@
   "engines": {
     "vscode": "^1.90.0"
   },
-  "activationEvents": ["*"],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
   "main": "./out/extension.js",
-  "contributes": {},
+  "contributes": {
+    "commands": [
+      {
+        "command": "todo-highlighter.forceUpdate",
+        "title": "TODO Highlighter: Force Update Decorations",
+        "category": "TODO"
+      }
+    ],
+    "configuration": {
+      "title": "TODO Highlighter",
+      "properties": {
+        "todoHighlighter.todoColor": {
+          "type": "string",
+          "default": "#ffcc00",
+          "description": "Color for TODO comments"
+        },
+        "todoHighlighter.fixColor": {
+          "type": "string", 
+          "default": "#ff5555",
+          "description": "Color for FIXME/BUG comments"
+        }
+      }
+    }
+  },
   "scripts": {
     "vscode:prepublish": "npm run compile",
     "compile": "tsc -p ./",
@@ -22,5 +47,9 @@
     "@types/node": "20.x",
     "typescript": "^5.3.3",
     "vscode-test": "^2.3.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tarasxryak/tag-highlighter-vscode/tree/main"
   }
 }
